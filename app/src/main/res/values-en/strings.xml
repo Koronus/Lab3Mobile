@@ -4,9 +4,10 @@
     <string name="tvHeaderTitle">Useful tips</string>
     <string name="tvHeaderSubtitle">30-Day Tips for Learning the Spring Boot Framework</string>
 
+
     <string name="back_button">← Back</string>
 
-    <string name="numerTip_1">День #1</string>
+    <string name="numerTip_1">Day #1</string>
     <string name="titleTip_1"> Разберитесь с ApplicationContext изнутри</string>
     <string name="descriptionTip_1">Поймите, что Spring — это контейнер, управляющий объектами (бинами).</string>
     <string name="long_description_1">Создайте пустой Maven-проект, подключите зависимость spring-context. Напишите простой класс Dog с методом bark(). Создайте XML-файл конфигурации (applicationContext.xml), где опишите бин bean id="myDog" class="com.example.Dog.
@@ -14,7 +15,7 @@
     Вызовите метод. После этого проделайте то же самое, но с Java-конфигурацией: создайте класс с аннотацией @Configuration, внутри — метод с @Bean, возвращающий new Dog(). Убедитесь, что вы не создавали объект через new вручную (кроме самого метода конфигурации), а запросили его у контейнера.
     </string>
 
-    <string name="numerTip_2">День #2</string>
+    <string name="numerTip_2">Day #2</string>
     <string name="titleTip_2">Исключите использование оператора new для  сервисов</string>
     <string name="descriptionTip_2">Доверьте создание объектов Spring</string>
     <string name="long_description_2"> В реальном проекте никогда не пишите UserService userService = new UserService(new UserRepository()).
@@ -23,14 +24,14 @@
     Spring сам найдет нужный бин UserRepository и внедрит его через конструктор при старте.
     Это называется "внедрение зависимостей" и обеспечивает слабую связанность кода.</string>
 
-    <string name="numerTip_3">День #3</string>
+    <string name="numerTip_3">Day #3</string>
     <string name="titleTip_3">Освойте три способа конфигурации последовательно</string>
     <string name="descriptionTip_3">XML, Java Config и аннотации — нужно знать все</string>
     <string name="long_description_3">
 Создайте бин для подключения к БД (пусть просто печатает URL) через XML. Пропишите свойство url внутри тега property  .Создайте класс AppConfig с @Configuration и методом, помеченным @Bean, который настраивает тот же компонент, но уже через Java-код. Поставьте над классом @Component, включите сканирование пакетов через @ComponentScan("com.example") в конфигурации. Поймите, как Spring находит классы без явного описания. В итоге вы сможете читать проекты любых поколений
 ></string>
 
-    <string name="numerTip_4">День #4</string>
+    <string name="numerTip_4">Day#4</string>
     <string name="titleTip_4">Экспериментируйте с ComponentScan</string>
     <string name="descriptionTip_4">Сканирование пакетов работает не магически, а по четким правилам</string>
     <string name="long_description_4">
@@ -39,7 +40,7 @@
 Поймите, что @SpringBootApplication включает в себя @ComponentScan для текущего пакета и всех подпакетов.
 </string>
 
-    <string name="numerTip_5">День #5</string>
+    <string name="numerTip_5">Day #5</string>
     <string name="titleTip_5">Внедряйте зависимости только через конструктор</string>
     <string name="descriptionTip_5">Полевой @Autowired (или инъекция через поле) — антипаттерн</string>
     <string name="long_description_5">
@@ -50,7 +51,7 @@
 Напишите юнит-тест (JUnit) для этого сервиса. Вы увидите, что для первого варианта вам придется использовать рефлексию или спринговский тестовый контекст, чтобы подставить моки. Для конструктора же вы просто вызываете new MyService(mockRepo1, mockRepo2, mockRepo3). Конструктор явно говорит: "без этих трех зависимостей я не могу работать". Плюс поля можно сделать final, что гарантирует неизменяемость.
 ></string>
 
-    <string name="numerTip_6">День #6</string>
+    <string name="numerTip_6">Day#6</string>
     <string name="titleTip_6">Изучите жизненный цикл бина на практике</string>
     <string name="descriptionTip_6">Бин рождается, живет и умирает по расписанию</string>
     <string name="long_description_6">
@@ -59,7 +60,7 @@
 Понимание этого цикла критично для работы с соединениями, пулами потоков и т.д.
 </string>
 
-    <string name="numerTip_7">День #7</string>
+    <string name="numerTip_7">Day #7</string>
     <string name="titleTip_7">Поиграйте со скоупами бинов</string>
     <string name="descriptionTip_7">Не все бины — одиночки (singleton)</string>
     <string name="long_description_7">
@@ -68,14 +69,14 @@
 Поймите, где нужно использовать prototype (например, для небезопасных с точки зрения потоков объектов или для объектов с кратковременным состоянием).
 </string>
 
-    <string name="numerTip_8">День #8</string>
+    <string name="numerTip_8">Day #8</string>
     <string name="titleTip_8">Детально разберите аннотации для извлечения данных из HTTP</string>
     <string name="descriptionTip_8">Аннотации @PathVariable, @RequestParam — это инструменты парсинга запроса</string>
     <string name="long_description_8">
 Создайте один контроллер, который принимает GET-запрос на /api/users/{userId}/orders. В методе используйте @PathVariable Long userId для получения ID из URL. Добавьте опциональный параметр фильтрации: @RequestParam(required = false) String status.
 Затем сделайте POST-запрос на /api/users/{userId}/orders с телом JSON, которое будет преобразовано в объект OrderDto с помощью @RequestBody. Добавьте получение заголовка User-Agent через @RequestHeader("User-Agent") String userAgent.</string>
 
-    <string name="numerTip_9">День #9</string>
+    <string name="numerTip_9">Day #9</string>
     <string name="titleTip_9">Централизованная обработка ошибок через @RestControllerAdvice</string>
     <string name="descriptionTip_9">Не разбрасывайте обработку исключений по всем контроллерам</string>
     <string name="long_description_9">
@@ -84,7 +85,7 @@
 Добавьте обработчик для MethodArgumentNotValidException, чтобы обрабатывать ошибки валидации.
 </string>
 
-    <string name="numerTip_10">День #10</string>
+    <string name="numerTip_10">Day #10</string>
     <string name="titleTip_10">Валидация входных данных с помощью Bean Validation</string>
     <string name="descriptionTip_10">Никогда не доверяйте данным, пришедшим снаружи</string>
     <string name="long_description_10">
@@ -93,7 +94,7 @@
 Попробуйте отправить запрос с пустым именем — получите 400 Bad Request с описанием ошибки.
 </string>
 
-    <string name="numerTip_11">День #11</string>
+    <string name="numerTip_11">Day #11</string>
     <string name="titleTip_11">Освойте Spring Data JPA на примере одной сущности</string>
     <string name="descriptionTip_11">JPA — это не магия, а абстракция над SQL</string>
     <string name="long_description_11">
@@ -102,7 +103,7 @@
 Добавьте кастомный метод с @Query("SELECT u FROM User u WHERE u.email LIKE %:domain") и параметром @Param("domain").
 </string>
 
-    <string name="numerTip_12">День #12</string>
+    <string name="numerTip_12">Day #12</string>
     <string name="titleTip_12">Настройте подключение к реальной базе данных</string>
     <string name="descriptionTip_12">H2 хороша для тестов, но в реальности используйте PostgreSQL или MySQL</string>
     <string name="long_description_12">
@@ -111,7 +112,7 @@
 Создайте таблицу через schema.sql или доверьтесь spring.jpa.hibernate.ddl-auto=update. Поймите разницу между ddl-auto значениями: none, validate, update, create, create-drop. В production используйте validate или управляйте миграциями через Liquibase/Flyway.
 </string>
 
-    <string name="numerTip_13">День #13</string>
+    <string name="numerTip_13">Day #13</string>
     <string name="titleTip_13">Внедрите миграции базы данных через Liquibase или Flyway</string>
     <string name="descriptionTip_13">Изменения БД должны храниться в репозитории, а не в головах разработчиков</string>
     <string name="long_description_13">
@@ -120,7 +121,7 @@
 Убедитесь, что при повторном запуске миграции не выполняются повторно. Поймите, что это позволяет разворачивать БД на любом окружении с гарантией консистентности.
 </string>
 
-    <string name="numerTip_14">День #14</string>
+    <string name="numerTip_14">Day #14</string>
     <string name="titleTip_14">Разберитесь с транзакциями на реальном примере</string>
     <string name="descriptionTip_14">Transactional — это не волшебство, а AOP с четкими правилами</string>
     <string name="long_description_14">
@@ -130,7 +131,7 @@
 Изучите propagation = Propagation.REQUIRES_NEW, чтобы создать вложенную транзакцию.
 </string>
 
-    <string name="numerTip_15">День #15</string>
+    <string name="numerTip_15">Day #15</string>
     <string name="titleTip_15">Настройте кэширование на уровне сервисов</string>
     <string name="descriptionTip_15">Кэш — это самый простой способ ускорить приложение</string>
     <string name="long_description_15">
@@ -140,7 +141,7 @@
 Изучите @CachePut для обновления кэша без вызова метода. Попробуйте подключить Redis вместо in-memory кэша: добавьте spring-boot-starter-data-redis и настройте соединение.
 </string>
 
-    <string name="numerTip_16">День #16</string>
+    <string name="numerTip_16">Day #16</string>
     <string name="titleTip_16">Напишите свой первый тест с MockMvc</string>
     <string name="descriptionTip_16">Тестирование контроллеров изолированно от контекста</string>
     <string name="long_description_16">
@@ -151,7 +152,7 @@
 Убедитесь, что тесты запускаются без реальной БД и сервера, за секунды.
 </string>
 
-    <string name="numerTip_17">День #17</string>
+    <string name="numerTip_17">Day #17</string>
     <string name="titleTip_17">Изучите профили (profiles) на практике</string>
     <string name="descriptionTip_17">Окружения dev, test, prod должны быть изолированы</string>
     <string name="long_description_17">
@@ -162,7 +163,7 @@
 Поймите, как профили помогают скрыть секреты разработки (например, встроенную консоль H2) в production.
 </string>
 
-    <string name="numerTip_18">День #18</string>
+    <string name="numerTip_18">Day #18</string>
     <string name="titleTip_18">Настройте логирование через SLF4J + Logback</string>
     <string name="descriptionTip_18">Логи — это единственное, что остается после падения</string>
     <string name="long_description_18">
@@ -173,7 +174,7 @@
 Убедитесь, что в production логируются только INFO и выше, а в dev — DEBUG.
 </string>
 
-    <string name="numerTip_19">День #19</string>
+    <string name="numerTip_19">Day #19</string>
     <string name="titleTip_19">Освойте Actuator для мониторинга приложения</string>
     <string name="descriptionTip_19">Вам нужно знать, живо ли приложение и что внутри происходит</string>
     <string name="long_description_19">
@@ -183,7 +184,7 @@
 Добавьте /actuator/prometheus, если подключаете мониторинг. Настройте безопасность: доступ к actuator должен быть ограничен (management.endpoints.web.port=8081).
 </string>
 
-    <string name="numerTip_20">День #20</string>
+    <string name="numerTip_20">Day #20</string>
     <string name="titleTip_20">Изучите асинхронность через @Async</string>
     <string name="descriptionTip_20">Не блокируйте главный поток на долгих операциях</string>
     <string name="long_description_20">
@@ -193,7 +194,7 @@
 Убедитесь, что методы с @Async вызываются из другого бина (self-invocation не работает из-за прокси).
 </string>
 
-    <string name="numerTip_21">День #21</string>
+    <string name="numerTip_21">Day #21</string>
     <string name="titleTip_21">Создайте свой стартер (Spring Boot Starter)</string>
     <string name="descriptionTip_21">Поймите, как работают автоконфигурации изнутри</string>
     <string name="long_description_21">
@@ -203,7 +204,7 @@
 Изучите аннотации условий: @ConditionalOnMissingBean, @ConditionalOnProperty, @ConditionalOnWebApplication. Поймите, как Spring Boot включает разные конфигурации в зависимости от наличия классов и свойств.
 </string>
 
-    <string name="numerTip_22">День #22</string>
+    <string name="numerTip_22">Day #22</string>
     <string name="titleTip_22">Освойте WebClient для вызова внешних API</string>
     <string name="descriptionTip_22">RestTemplate устарел, WebClient — реактивный и современный</string>
     <string name="long_description_22">
@@ -213,7 +214,7 @@
 Настройте таймауты и логирование через ExchangeFilterFunction.
 </string>
 
-    <string name="numerTip_23">День #23</string>
+    <string name="numerTip_23">Day #23</string>
     <string name="titleTip_23">Настройте безопасность через Spring Security на простом примере</string>
     <string name="descriptionTip_23">Безопасность — это не опция, а обязательное требование</string>
     <string name="long_description_23">
@@ -223,7 +224,7 @@
 Создайте форму логина: formLogin().permitAll(). Изучите, как работает CSRF защита для POST-запросов.
 </string>
 
-    <string name="numerTip_24">День #24</string>
+    <string name="numerTip_24">Day #24</string>
     <string name="titleTip_24">Реализуйте JWT-аутентификацию вручную</string>
     <string name="descriptionTip_24">Понимание JWT убережет от ошибок с безопасностью</string>
     <string name="long_description_24">
@@ -233,7 +234,7 @@
 Протестируйте: сначала получите токен, затем используйте его в заголовке для доступа к защищенным эндпоинтам.
 </string>
 
-    <string name="numerTip_25">День #25</string>
+    <string name="numerTip_25">Day #25</string>
     <string name="titleTip_25">Освойте событийную модель (Application Events)</string>
     <string name="descriptionTip_25">События помогают развязать компоненты</string>
     <string name="long_description_25">
@@ -243,7 +244,7 @@
 Изучите асинхронные события: добавьте @Async на слушатель, предварительно включив @EnableAsync. Поймите, как события работают в рамках транзакции: @TransactionalEventListener.
 </string>
 
-    <string name="numerTip_26">День #26</string>
+    <string name="numerTip_26">Day #26</string>
     <string name="titleTip_26">Изучите работу с файлами через MultipartFile</string>
     <string name="descriptionTip_26">Загрузка файлов — частая задача в веб-приложениях</string>
     <string name="long_description_26">
@@ -253,7 +254,7 @@
 Создайте эндпоинт для скачивания: возвращайте ResponseEntity с InputStreamResource и заголовком Content-Disposition.
 </string>
 
-    <string name="numerTip_27">День #27</string>
+    <string name="numerTip_27">Day #27</string>
     <string name="titleTip_27">Настройте кэш второго уровня в Hibernate</string>
     <string name="descriptionTip_27">Кэш сущностей может ускорить приложение в разы</string>
     <string name="long_description_27">
@@ -263,7 +264,7 @@
 Изучите кэш запросов: spring.jpa.properties.hibernate.cache.use_query_cache=true. Поймите, когда кэш эффективен, а когда приводит к проблемам с памятью.
 </string>
 
-    <string name="numerTip_28">День #28</string>
+    <string name="numerTip_28">Day #28</string>
     <string name="titleTip_28">Освойте тестирование с Testcontainers</string>
     <string name="descriptionTip_28">Реальные тесты на реальной БД, а не на H2</string>
     <string name="long_description_28">
@@ -273,7 +274,7 @@
 Убедитесь, что контейнеры автоматически запускаются и удаляются после тестов.
 </string>
 
-    <string name="numerTip_29">День #29</string>
+    <string name="numerTip_29">Day #29</string>
     <string name="titleTip_29">Разберитесь с конфигурацией через аннотации условий</string>
     <string name="descriptionTip_29">Условные бины — основа гибких конфигураций</string>
     <string name="long_description_29">
@@ -282,7 +283,7 @@
 Поймите, как Spring Boot использует эти аннотации для того, чтобы включать автоконфигурацию только когда она действительно нужна.
 </string>
 
-    <string name="numerTip_30">День #30</string>
+    <string name="numerTip_30">Day #30</string>
     <string name="titleTip_30">Изучите работу с WebSockets через STOMP</string>
     <string name="descriptionTip_30">Реалтайм-коммуникация открывает новые возможности</string>
     <string name="long_description_30">

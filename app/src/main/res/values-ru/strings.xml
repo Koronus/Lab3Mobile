@@ -1,10 +1,11 @@
 <resources>
-    <string name="app_name">Tips</string>
+    <string name="app_name">Советы</string>
 
-    <string name="tvHeaderTitle">Useful tips</string>
-    <string name="tvHeaderSubtitle">30-Day Tips for Learning the Spring Boot Framework</string>
+    <string name="tvHeaderTitle">Полезные советы</string>
+    <string name="tvHeaderSubtitle">Советы на 30 дней по изучению фреймворка Spring Boot</string>
 
-    <string name="back_button">← Back</string>
+
+    <string name="back_button">← Назад</string>
 
     <string name="numerTip_1">День #1</string>
     <string name="titleTip_1"> Разберитесь с ApplicationContext изнутри</string>
