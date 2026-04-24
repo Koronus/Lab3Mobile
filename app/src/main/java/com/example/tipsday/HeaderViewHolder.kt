@@ -8,9 +8,4 @@ class HeaderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private val tvHeaderTitle: TextView = itemView.findViewById(R.id.tvHeaderTitle)
     private val tvHeaderSubtitle: TextView = itemView.findViewById(R.id.tvHeaderSubtitle)
 
-    fun bind(){
-
-    }
-
-
 }

@@ -4,293 +4,155 @@
     <string name="tvHeaderTitle">Useful tips</string>
     <string name="tvHeaderSubtitle">30-Day Tips for Learning the Spring Boot Framework</string>
 
-
     <string name="back_button">← Back</string>
 
     <string name="numerTip_1">Day #1</string>
-    <string name="titleTip_1"> Разберитесь с ApplicationContext изнутри</string>
-    <string name="descriptionTip_1">Поймите, что Spring — это контейнер, управляющий объектами (бинами).</string>
-    <string name="long_description_1">Создайте пустой Maven-проект, подключите зависимость spring-context. Напишите простой класс Dog с методом bark(). Создайте XML-файл конфигурации (applicationContext.xml), где опишите бин bean id="myDog" class="com.example.Dog.
-    В методе main создайте контекст: ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml"). Явно получите бин: Dog dog = context.getBean("myDog", Dog.class).
-    Вызовите метод. После этого проделайте то же самое, но с Java-конфигурацией: создайте класс с аннотацией @Configuration, внутри — метод с @Bean, возвращающий new Dog(). Убедитесь, что вы не создавали объект через new вручную (кроме самого метода конфигурации), а запросили его у контейнера.
-    </string>
+    <string name="titleTip_1">Understand ApplicationContext from the Inside</string>
+    <string name="descriptionTip_1">Understand that Spring is a container that manages objects (beans).</string>
+    <string name="long_description_1">Create an empty Maven project and add the spring-context dependency. Write a simple Dog class with a bark() method. Create an XML configuration file (applicationContext.xml) describing a bean: bean id="myDog" class="com.example.Dog". In the main method, create the context: ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml"). Explicitly get the bean: Dog dog = context.getBean("myDog", Dog.class). Call the method. Then do the same with Java configuration: create a class annotated with @Configuration, inside it a method with @Bean returning new Dog(). Make sure you did not create objects manually using new (except for the configuration method itself) but requested them from the container.</string>
 
     <string name="numerTip_2">Day #2</string>
-    <string name="titleTip_2">Исключите использование оператора new для  сервисов</string>
-    <string name="descriptionTip_2">Доверьте создание объектов Spring</string>
-    <string name="long_description_2"> В реальном проекте никогда не пишите UserService userService = new UserService(new UserRepository()).
-    Вместо этого создайте класс UserService с аннотацией @Service, класс UserRepository с аннотацией @Repository.
-    В классе UserService объявите поле private final UserRepository userRepo и создайте конструктор (если используете Lombok — @RequiredArgsConstructor).
-    Spring сам найдет нужный бин UserRepository и внедрит его через конструктор при старте.
-    Это называется "внедрение зависимостей" и обеспечивает слабую связанность кода.</string>
+    <string name="titleTip_2">Eliminate the use of the new operator for services</string>
+    <string name="descriptionTip_2">Delegate object creation to Spring</string>
+    <string name="long_description_2">In a real project, never write UserService userService = new UserService(new UserRepository()). Instead, create a UserService class with the @Service annotation and a UserRepository class with the @Repository annotation. In the UserService class, declare a private final UserRepository userRepo field and create a constructor (use @RequiredArgsConstructor if using Lombok). Spring will find the required UserRepository bean and inject it via constructor at startup. This is called "dependency injection" and ensures loose coupling.</string>
 
     <string name="numerTip_3">Day #3</string>
-    <string name="titleTip_3">Освойте три способа конфигурации последовательно</string>
-    <string name="descriptionTip_3">XML, Java Config и аннотации — нужно знать все</string>
-    <string name="long_description_3">
-Создайте бин для подключения к БД (пусть просто печатает URL) через XML. Пропишите свойство url внутри тега property  .Создайте класс AppConfig с @Configuration и методом, помеченным @Bean, который настраивает тот же компонент, но уже через Java-код. Поставьте над классом @Component, включите сканирование пакетов через @ComponentScan("com.example") в конфигурации. Поймите, как Spring находит классы без явного описания. В итоге вы сможете читать проекты любых поколений
-></string>
+    <string name="titleTip_3">Master Three Configuration Approaches Sequentially</string>
+    <string name="descriptionTip_3">XML, Java Config and annotations — you need to know all</string>
+    <string name="long_description_3">Create a bean for database connection (just print the URL) using XML. Specify the url property inside the property tag. Create an AppConfig class with @Configuration and a method annotated with @Bean that configures the same component, but using Java code. Add @Component to the class and enable package scanning via @ComponentScan("com.example") in the configuration. Understand how Spring finds classes without explicit declaration. Ultimately, you will be able to read projects of any generation.</string>
 
-    <string name="numerTip_4">Day#4</string>
-    <string name="titleTip_4">Экспериментируйте с ComponentScan</string>
-    <string name="descriptionTip_4">Сканирование пакетов работает не магически, а по четким правилам</string>
-    <string name="long_description_4">
-Создайте структуру пакетов: com.example.controllers, com.example.services, com.example.utils. Положите по одному классу с @Component в каждый пакет. В главном классе запустите приложение и убедитесь, что все бины созданы.
-Теперь измените базовый пакет сканирования, например, на com.example.controllers. Запустите снова — бины из других пакетов не будут созданы. Добавьте в аннотацию @ComponentScan явное указание нескольких пакетов.
-Поймите, что @SpringBootApplication включает в себя @ComponentScan для текущего пакета и всех подпакетов.
-</string>
+    <string name="numerTip_4">Day #4</string>
+    <string name="titleTip_4">Experiment with ComponentScan</string>
+    <string name="descriptionTip_4">Package scanning works not by magic, but by clear rules</string>
+    <string name="long_description_4">Create a package structure: com.example.controllers, com.example.services, com.example.utils. Place one class with @Component in each package. Run the application and verify that all beans are created. Now change the base package scan to, say, com.example.controllers. Run again – beans from other packages will not be created. Add explicit specification of multiple packages in the @ComponentScan annotation. Understand that @SpringBootApplication includes @ComponentScan for the current package and all its subpackages.</string>
 
     <string name="numerTip_5">Day #5</string>
-    <string name="titleTip_5">Внедряйте зависимости только через конструктор</string>
-    <string name="descriptionTip_5">Полевой @Autowired (или инъекция через поле) — антипаттерн</string>
-    <string name="long_description_5">
-Создайте сервис с тремя зависимостями. Реализуйте три варианта:
-1) инъекция через поля (@Autowired private Repo1 repo1;)
-2) через сеттеры
-3) через конструктор
-Напишите юнит-тест (JUnit) для этого сервиса. Вы увидите, что для первого варианта вам придется использовать рефлексию или спринговский тестовый контекст, чтобы подставить моки. Для конструктора же вы просто вызываете new MyService(mockRepo1, mockRepo2, mockRepo3). Конструктор явно говорит: "без этих трех зависимостей я не могу работать". Плюс поля можно сделать final, что гарантирует неизменяемость.
-></string>
+    <string name="titleTip_5">Inject Dependencies Only via Constructor</string>
+    <string name="descriptionTip_5">Field @Autowired (or field injection) is an anti-pattern</string>
+    <string name="long_description_5">Create a service with three dependencies. Implement three options: 1) field injection (@Autowired private Repo1 repo1;), 2) setter injection, 3) constructor injection. Write a unit test (JUnit) for this service. You will see that for the first option, you will have to use reflection or the Spring test context to provide mocks. For the constructor, you simply call new MyService(mockRepo1, mockRepo2, mockRepo3). The constructor explicitly states: "without these three dependencies, I cannot work". In addition, fields can be made final, which guarantees immutability.</string>
 
-    <string name="numerTip_6">Day#6</string>
-    <string name="titleTip_6">Изучите жизненный цикл бина на практике</string>
-    <string name="descriptionTip_6">Бин рождается, живет и умирает по расписанию</string>
-    <string name="long_description_6">
-Создайте класс LifecycleBean. Добавьте обычный конструктор, выводящий сообщение "Constructor". Добавьте метод, помеченный @PostConstruct (вывод "PostConstruct"). Добавьте метод, помеченный @PreDestroy (вывод "PreDestroy").
-Запустите приложение как Spring Boot (чтобы контекст жил и умер). Вы увидите порядок: сначала конструктор (создание объекта), потом PostConstruct (внедрение зависимостей уже произошло, можно инициализировать ресурсы), при остановке — PreDestroy (освободить ресурсы).
-Понимание этого цикла критично для работы с соединениями, пулами потоков и т.д.
-</string>
+    <string name="numerTip_6">Day #6</string>
+    <string name="titleTip_6">Study the Bean Lifecycle in Practice</string>
+    <string name="descriptionTip_6">A bean is born, lives, and dies according to a schedule</string>
+    <string name="long_description_6">Create a LifecycleBean class. Add a regular constructor that prints "Constructor". Add a method annotated with @PostConstruct (prints "PostConstruct"). Add a method annotated with @PreDestroy (prints "PreDestroy"). Run the application as a Spring Boot app (so the context lives and dies). You will see the order: first the constructor (object creation), then PostConstruct (dependencies have already been injected, you can initialize resources), upon shutdown, PreDestroy (release resources). Understanding this lifecycle is critical for working with connections, thread pools, etc.</string>
 
     <string name="numerTip_7">Day #7</string>
-    <string name="titleTip_7">Поиграйте со скоупами бинов</string>
-    <string name="descriptionTip_7">Не все бины — одиночки (singleton)</string>
-    <string name="long_description_7">
-Создайте класс Counter, в котором есть поле int count и метод increment(), увеличивающий его. Сделайте бин этого класса @Scope("prototype"). В контроллере или другом сервисе запросите этот бин два раза (applicationContext.getBean(Counter.class)). Увеличьте счетчик в первом, выведите во втором — значения будут разными, потому что каждый раз создается новый объект.
-Теперь уберите @Scope (по умолчанию singleton) и повторите — значение счетчика будет общим.
-Поймите, где нужно использовать prototype (например, для небезопасных с точки зрения потоков объектов или для объектов с кратковременным состоянием).
-</string>
+    <string name="titleTip_7">Play with Bean Scopes</string>
+    <string name="descriptionTip_7">Not all beans are singletons</string>
+    <string name="long_description_7">Create a Counter class with an int count field and an increment() method that increments it. Make this bean @Scope("prototype"). In a controller or another service, request this bean twice (applicationContext.getBean(Counter.class)). Increment the counter in the first, print it in the second — the values will be different because a new object is created each time. Now remove @Scope (default is singleton) and repeat – the counter value will be shared. Understand when to use prototype (e.g., for thread-unsafe objects or objects with short-lived state).</string>
 
     <string name="numerTip_8">Day #8</string>
-    <string name="titleTip_8">Детально разберите аннотации для извлечения данных из HTTP</string>
-    <string name="descriptionTip_8">Аннотации @PathVariable, @RequestParam — это инструменты парсинга запроса</string>
-    <string name="long_description_8">
-Создайте один контроллер, который принимает GET-запрос на /api/users/{userId}/orders. В методе используйте @PathVariable Long userId для получения ID из URL. Добавьте опциональный параметр фильтрации: @RequestParam(required = false) String status.
-Затем сделайте POST-запрос на /api/users/{userId}/orders с телом JSON, которое будет преобразовано в объект OrderDto с помощью @RequestBody. Добавьте получение заголовка User-Agent через @RequestHeader("User-Agent") String userAgent.</string>
+    <string name="titleTip_8">Dive into Annotations for Extracting Data from HTTP</string>
+    <string name="descriptionTip_8">\u0040PathVariable, @RequestParam are request parsing tools</string>
+    <string name="long_description_8">Create a controller that accepts a GET request to /api/users/{userId}/orders. Use @PathVariable Long userId to get the ID from the URL. Add an optional filtering parameter: @RequestParam(required = false) String status. Then make a POST request to /api/users/{userId}/orders with a JSON body that will be converted to an OrderDto object using @RequestBody. Add retrieval of the User-Agent header via @RequestHeader("User-Agent") String userAgent.</string>
 
     <string name="numerTip_9">Day #9</string>
-    <string name="titleTip_9">Централизованная обработка ошибок через @RestControllerAdvice</string>
-    <string name="descriptionTip_9">Не разбрасывайте обработку исключений по всем контроллерам</string>
-    <string name="long_description_9">
-Создайте собственное исключение, например, UserNotFoundException extends RuntimeException. В сервисе выбрасывайте его, если пользователь не найден.
-Создайте класс GlobalExceptionHandler с аннотацией @RestControllerAdvice. Внутри напишите метод: @ExceptionHandler(UserNotFoundException.class) @ResponseStatus(HttpStatus.NOT_FOUND) public ErrorResponse handleUserNotFound(...). Этот метод будет ловить исключение из любого контроллера и возвращать красивое JSON-сообщение об ошибке.
-Добавьте обработчик для MethodArgumentNotValidException, чтобы обрабатывать ошибки валидации.
-</string>
+    <string name="titleTip_9">Centralized Error Handling with @RestControllerAdvice</string>
+    <string name="descriptionTip_9">Don t scatter exception handling across all controllers</string>
+    <string name="long_description_9">Create a custom exception, e.g., UserNotFoundException extends RuntimeException. In the service, throw it if the user is not found. Create a GlobalExceptionHandler class with @RestControllerAdvice. Inside, write a method: @ExceptionHandler(UserNotFoundException.class) @ResponseStatus(HttpStatus.NOT_FOUND) public ErrorResponse handleUserNotFound(...). This method will catch the exception from any controller and return a nice JSON error message. Add a handler for MethodArgumentNotValidException to handle validation errors.</string>
 
     <string name="numerTip_10">Day #10</string>
-    <string name="titleTip_10">Валидация входных данных с помощью Bean Validation</string>
-    <string name="descriptionTip_10">Никогда не доверяйте данным, пришедшим снаружи</string>
-    <string name="long_description_10">
-Добавьте зависимость spring-boot-starter-validation. Создайте DTO (например, CreateUserRequest). Пометьте поля аннотациями: @NotBlank(message = "Имя обязательно") String name, @Email String email, @Min(18) Integer age.
-В контроллере перед DTO поставьте аннотацию @Valid. Добавьте параметр BindingResult, если хотите обрабатывать ошибки вручную, или доверьтесь глобальному обработчику (см. совет 9).
-Попробуйте отправить запрос с пустым именем — получите 400 Bad Request с описанием ошибки.
-</string>
+    <string name="titleTip_10">Input Validation Using Bean Validation</string>
+    <string name="descriptionTip_10">Never trust data coming from outside</string>
+    <string name="long_description_10">Add the spring-boot-starter-validation dependency. Create a DTO (e.g., CreateUserRequest). Annotate the fields: @NotBlank(message = "Name is required") String name, @Email String email, @Min(18) Integer age. In the controller, add the @Valid annotation before the DTO. Add a BindingResult parameter if you want to handle errors manually, or rely on the global handler (see tip 9). Try sending a request with an empty name – get 400 Bad Request with an error description.</string>
 
     <string name="numerTip_11">Day #11</string>
-    <string name="titleTip_11">Освойте Spring Data JPA на примере одной сущности</string>
-    <string name="descriptionTip_11">JPA — это не магия, а абстракция над SQL</string>
-    <string name="long_description_11">
-Создайте сущность User с полями id, name, email. Добавьте аннотации @Entity, @Id, @GeneratedValue. Создайте интерфейс UserRepository extends JpaRepository User, Long> — без реализации. Включите логирование SQL в application.properties: spring.jpa.show-sql=true, spring.jpa.properties.hibernate.format_sql=true.
-Напишите метод поиска по имени: List User findByName(String name). Посмотрите, какой Hibernate сгенерировал SQL. Затем добавьте более сложный метод: List User  findByNameContainingIgnoreCase(String namePart). Поймите, как работает парсинг имен методов в запросы.
-Добавьте кастомный метод с @Query("SELECT u FROM User u WHERE u.email LIKE %:domain") и параметром @Param("domain").
-</string>
+    <string name="titleTip_11">Master Spring Data JPA with a Single Entity</string>
+    <string name="descriptionTip_11">JPA is not magic, but an abstraction over SQL</string>
+    <string name="long_description_11">Create a User entity with fields id, name, email. Add annotations @Entity, @Id, @GeneratedValue. Create a UserRepository interface extends JpaRepository\u003CUser\u003E, Long> — no implementation. Enable SQL logging in application.properties: spring.jpa.show-sql=true, spring.jpa.properties.hibernate.format_sql=true. Write a search method by name: List\u003CUser\u003E  findByName(String name). See what SQL Hibernate generated. Then add a more complex method: List User findByNameContainingIgnoreCase(String namePart). Understand how method name parsing into queries works. Add a custom method with @Query("SELECT u FROM User u WHERE u.email LIKE %:domain") and @Param("domain") parameter.</string>
 
     <string name="numerTip_12">Day #12</string>
-    <string name="titleTip_12">Настройте подключение к реальной базе данных</string>
-    <string name="descriptionTip_12">H2 хороша для тестов, но в реальности используйте PostgreSQL или MySQL</string>
-    <string name="long_description_12">
-Установите Docker (или локальную БД). Запустите PostgreSQL: docker run --name postgres-spring -e POSTGRES_PASSWORD=password -p 5432:5432 -d postgres.
-Добавьте зависимость org.postgresql:postgresql. Настройте application.properties: spring.datasource.url=jdbc:postgresql://localhost:5432/postgres, spring.datasource.username=postgres, spring.datasource.password=password.
-Создайте таблицу через schema.sql или доверьтесь spring.jpa.hibernate.ddl-auto=update. Поймите разницу между ddl-auto значениями: none, validate, update, create, create-drop. В production используйте validate или управляйте миграциями через Liquibase/Flyway.
-</string>
+    <string name="titleTip_12">Configure Connection to a Real Database</string>
+    <string name="descriptionTip_12">H2 is good for tests, but in practice use PostgreSQL or MySQL</string>
+    <string name="long_description_12">Install Docker (or a local database). Run PostgreSQL: docker run --name postgres-spring -e POSTGRES_PASSWORD=password -p 5432:5432 -d postgres. Add the org.postgresql:postgresql dependency. Configure application.properties: spring.datasource.url=jdbc:postgresql://localhost:5432/postgres, spring.datasource.username=postgres, spring.datasource.password=password. Create a table via schema.sql or rely on spring.jpa.hibernate.ddl-auto=update. Understand the difference between ddl-auto values: none, validate, update, create, create-drop. In production, use validate or manage migrations via Liquibase/Flyway.</string>
 
     <string name="numerTip_13">Day #13</string>
-    <string name="titleTip_13">Внедрите миграции базы данных через Liquibase или Flyway</string>
-    <string name="descriptionTip_13">Изменения БД должны храниться в репозитории, а не в головах разработчиков</string>
-    <string name="long_description_13">
-Добавьте зависимость org.liquibase:liquibase-core. Создайте папку src/main/resources/db/changelog. Создайте файл db.changelog-master.xml. Напишите первый changeset с созданием таблицы users (id, name, email, created_at).
-Добавьте второй changeset с добавлением колонки phone_number. Запустите приложение — Liquibase применит миграции в правильном порядке. Посмотрите на таблицу databasechangelog, где хранится история.
-Убедитесь, что при повторном запуске миграции не выполняются повторно. Поймите, что это позволяет разворачивать БД на любом окружении с гарантией консистентности.
-</string>
+    <string name="titleTip_13">Implement Database Migrations via Liquibase or Flyway</string>
+    <string name="descriptionTip_13">Database changes must be stored in a repository, not in developers heads</string>
+    <string name="long_description_13">Add the org.liquibase:liquibase-core dependency. Create the src/main/resources/db/changelog folder. Create a db.changelog-master.xml file. Write the first changeset to create a users table (id, name, email, created_at). Add a second changeset to add a phone_number column. Run the application — Liquibase will apply the migrations in the correct order. Check the databasechangelog table where the history is stored. Make sure that on subsequent runs, migrations are not repeated. Understand that this allows you to deploy the database on any environment with consistency guarantees.</string>
 
     <string name="numerTip_14">Day #14</string>
-    <string name="titleTip_14">Разберитесь с транзакциями на реальном примере</string>
-    <string name="descriptionTip_14">Transactional — это не волшебство, а AOP с четкими правилами</string>
-    <string name="long_description_14">
-Создайте сервис с двумя методами: saveUser() и saveUserWithLog(). В первом сохраняете пользователя, во втором вызываете первый и сохраняете лог.
-Поставьте @Transactional на втором методе. Внутри после сохранения пользователя выбросьте RuntimeException. Запустите — оба сохранения откатятся, потому что транзакция целостна.
-Теперь уберите @Transactional со второго метода, оставив только на первом. Выбросьте исключение — пользователь сохранится, потому что методы вызываются в рамках одного потока, но транзакция не распространяется.
-Изучите propagation = Propagation.REQUIRES_NEW, чтобы создать вложенную транзакцию.
-</string>
+    <string name="titleTip_14">Understand Transactions with a Real Example</string>
+    <string name="descriptionTip_14">\u0040Transactional is not magic, but AOP with clear rules</string>
+    <string name="long_description_14">Create a service with two methods: saveUser() and saveUserWithLog(). In the first, save the user; in the second, call the first and save a log. Add @Transactional to the second method. Inside, after saving the user, throw a RuntimeException. Run — both saves will roll back because the transaction is atomic. Now remove @Transactional from the second method, leaving it only on the first. Throw an exception — the user will be saved because the transaction does not propagate. Study propagation = Propagation.REQUIRES_NEW to create a nested transaction.</string>
 
     <string name="numerTip_15">Day #15</string>
-    <string name="titleTip_15">Настройте кэширование на уровне сервисов</string>
-    <string name="descriptionTip_15">Кэш — это самый простой способ ускорить приложение</string>
-    <string name="long_description_15">
-Добавьте spring-boot-starter-cache. В главном классе поставьте @EnableCaching. В сервисе над методом getUserById поставьте @Cacheable(value = "users", key = "#id").
-Вызовите метод дважды с одним ID — первый раз выполнится SQL, второй раз данные возьмутся из кэша.
-Добавьте метод updateUser с @CacheEvict(value = "users", key = "#user.id") — он будет очищать кэш при обновлении.
-Изучите @CachePut для обновления кэша без вызова метода. Попробуйте подключить Redis вместо in-memory кэша: добавьте spring-boot-starter-data-redis и настройте соединение.
-</string>
+    <string name="titleTip_15">Configure Caching at Service Level</string>
+    <string name="descriptionTip_15">Caching is the easiest way to speed up an application</string>
+    <string name="long_description_15">Add spring-boot-starter-cache. Add @EnableCaching to the main class. In the service, add @Cacheable(value = "users", key = "#id") above the getUserById method. Call the method twice with the same ID — the first time SQL will be executed, the second time the data will come from the cache. Add an updateUser method with @CacheEvict(value = "users", key = "#user.id") — it will clear the cache on update. Explore @CachePut for updating the cache without invoking the method. Try connecting Redis instead of an in-memory cache: add spring-boot-starter-data-redis and configure the connection.</string>
 
     <string name="numerTip_16">Day #16</string>
-    <string name="titleTip_16">Напишите свой первый тест с MockMvc</string>
-    <string name="descriptionTip_16">Тестирование контроллеров изолированно от контекста</string>
-    <string name="long_description_16">
-Добавьте spring-boot-starter-test. Создайте класс UserControllerTest с аннотациями @WebMvcTest(UserController.class) и @AutoConfigureMockMvc.
-Внедрите MockMvc. Напишите тест: mockMvc.perform(get("/api/users/1")).andExpect(status().isOk()).andExpect(jsonPath("$.name").value("John")).
-Замокайте сервис через @MockBean: когда вызывается userService.findById(1L), возвращайте тестового пользователя.
-Напишите тест на создание пользователя: mockMvc.perform(post("/api/users").contentType(MediaType.APPLICATION_JSON).content("{\"name\":\"John\"}")).andExpect(status().isCreated()).
-Убедитесь, что тесты запускаются без реальной БД и сервера, за секунды.
-</string>
+    <string name="titleTip_16">Write Your First Test with MockMvc</string>
+    <string name="descriptionTip_16">Testing controllers in isolation from the context</string>
+    <string name="long_description_16">Add spring-boot-starter-test. Create a UserControllerTest class with @WebMvcTest(UserController.class) and @AutoConfigureMockMvc. Inject MockMvc. Write a test: mockMvc.perform(get("/api/users/1")).andExpect(status().isOk()).andExpect(jsonPath("$.name").value("John")). Mock the service via @MockBean: when userService.findById(1L) is called, return a test user. Write a test for user creation: mockMvc.perform(post("/api/users").contentType(MediaType.APPLICATION_JSON).content("{\"name\":\"John\"}")).andExpect(status().isCreated()). Ensure the tests run without a real DB and server in seconds.</string>
 
     <string name="numerTip_17">Day #17</string>
-    <string name="titleTip_17">Изучите профили (profiles) на практике</string>
-    <string name="descriptionTip_17">Окружения dev, test, prod должны быть изолированы</string>
-    <string name="long_description_17">
-Создайте три файла: application-dev.properties, application-test.properties, application-prod.properties. В каждом укажите разные URL базы данных и уровень логирования.
-В application.properties напишите spring.profiles.active=dev — запустится dev-конфиг.
-Создайте бин, который должен существовать только в dev: @Profile("dev") @Component public class DevOnlyBean {...}. При активации другого профиля этот бин не создастся.
-Изучите программную активацию профилей через mvn spring-boot:run -Dspring-boot.run.profiles=prod.
-Поймите, как профили помогают скрыть секреты разработки (например, встроенную консоль H2) в production.
-</string>
+    <string name="titleTip_17">Practice with Profiles</string>
+    <string name="descriptionTip_17">Dev, test, prod environments must be isolated</string>
+    <string name="long_description_17">Create three files: application-dev.properties, application-test.properties, application-prod.properties. In each, specify different database URLs and logging levels. In application.properties, write spring.profiles.active=dev — the dev config will run. Create a bean that should exist only in dev: @Profile("dev") @Component public class DevOnlyBean {...}. When another profile is activated, this bean will not be created. Study programmatic profile activation via mvn spring-boot:run -Dspring-boot.run.profiles=prod. Understand how profiles help hide development secrets (e.g., the embedded H2 console) in production.</string>
 
     <string name="numerTip_18">Day #18</string>
-    <string name="titleTip_18">Настройте логирование через SLF4J + Logback</string>
-    <string name="descriptionTip_18">Логи — это единственное, что остается после падения</string>
-    <string name="long_description_18">
-В любом классе добавьте private static final Logger log = LoggerFactory.getLogger(MyClass.class); или используйте Lombok: @Slf4j.
-В методах пишите логи разных уровней: log.info("User {} created", userId), log.debug("Processing request: {}", request), log.error("Failed to save", exception).
-Создайте файл logback-spring.xml в resources. Настройте вывод в консоль с паттерном, показывающим дату, уровень, имя класса. Добавьте отдельный appender для записи ошибок в файл error.log.
-Настройте уровни логирования для разных пакетов: logging.level.com.example=DEBUG, logging.level.org.springframework.web=INFO.
-Убедитесь, что в production логируются только INFO и выше, а в dev — DEBUG.
-</string>
+    <string name="titleTip_18">Configure Logging with SLF4J + Logback</string>
+    <string name="descriptionTip_18">Logs are all that remains after a crash</string>
+    <string name="long_description_18">In any class, add private static final Logger log = LoggerFactory.getLogger(MyClass.class); or use Lombok: @Slf4j. In methods, write logs at different levels: log.info("User {} created", userId), log.debug("Processing request: {}", request), log.error("Failed to save", exception). Create a logback-spring.xml file in resources. Configure console output with a pattern showing date, level, class name. Add a separate appender to write errors to error.log. Set logging levels for different packages: logging.level.com.example=DEBUG, logging.level.org.springframework.web=INFO. Ensure that production logs only INFO and above, while dev logs DEBUG.</string>
 
     <string name="numerTip_19">Day #19</string>
-    <string name="titleTip_19">Освойте Actuator для мониторинга приложения</string>
-    <string name="descriptionTip_19">Вам нужно знать, живо ли приложение и что внутри происходит</string>
-    <string name="long_description_19">
-Добавьте spring-boot-starter-actuator. В application.properties откройте эндпоинты: management.endpoints.web.exposure.include=health,info,metrics,env.
-Запустите приложение и перейдите на /actuator/health — увидите {"status":"UP"}. Это может использовать балансировщик нагрузки для проверки живости.
-Добавьте кастомную информацию в info: напишите бин, реализующий InfoContributor. Посмотрите /actuator/metrics — там куча метрик о памяти, потоках, HTTP-запросах.
-Добавьте /actuator/prometheus, если подключаете мониторинг. Настройте безопасность: доступ к actuator должен быть ограничен (management.endpoints.web.port=8081).
-</string>
+    <string name="titleTip_19">Explore Actuator for Application Monitoring</string>
+    <string name="descriptionTip_19">You need to know if the app is alive and what is happening inside</string>
+    <string name="long_description_19">Add spring-boot-starter-actuator. In application.properties, expose endpoints: management.endpoints.web.exposure.include=health,info,metrics,env. Run the application and go to /actuator/health – you will see {"status":"UP"}. A load balancer can use this to check liveness. Add custom info: write a bean implementing InfoContributor. Check /actuator/metrics – there are many metrics about memory, threads, HTTP requests. Add /actuator/prometheus if you are setting up monitoring. Configure security: access to actuator should be restricted (management.endpoints.web.port=8081).</string>
 
     <string name="numerTip_20">Day #20</string>
-    <string name="titleTip_20">Изучите асинхронность через @Async</string>
-    <string name="descriptionTip_20">Не блокируйте главный поток на долгих операциях</string>
-    <string name="long_description_20">
-В главном классе добавьте @EnableAsync. Создайте сервис NotificationService с методом sendEmail, помеченным @Async. В методе добавьте Thread.sleep(5000) и вывод в консоль.
-В контроллере вызовите этот метод и сразу верните "Sending...". Вы увидите, что контроллер ответил мгновенно, а письмо "отправилось" через 5 секунд.
-Настройте пул потоков: создайте класс AsyncConfig, реализующий AsyncConfigurer, переопределите getAsyncExecutor() с ThreadPoolTaskExecutor, указав corePoolSize=5, maxPoolSize=10, queueCapacity=100.
-Убедитесь, что методы с @Async вызываются из другого бина (self-invocation не работает из-за прокси).
-</string>
+    <string name="titleTip_20">Explore Asynchrony with @Async</string>
+    <string name="descriptionTip_20">Do not block the main thread on long operations</string>
+    <string name="long_description_20">Add @EnableAsync to the main class. Create a NotificationService with a sendEmail method annotated with @Async. Add Thread.sleep(5000) and a console output inside the method. In the controller, call this method and immediately return "Sending...". You will see that the controller responds instantly, while the email "sends" after 5 seconds. Configure a thread pool: create an AsyncConfig class implementing AsyncConfigurer, override getAsyncExecutor() with ThreadPoolTaskExecutor, setting corePoolSize=5, maxPoolSize=10, queueCapacity=100. Make sure @Async methods are called from another bean (self-invocation does not work due to proxying).</string>
 
     <string name="numerTip_21">Day #21</string>
-    <string name="titleTip_21">Создайте свой стартер (Spring Boot Starter)</string>
-    <string name="descriptionTip_21">Поймите, как работают автоконфигурации изнутри</string>
-    <string name="long_description_21">
-Создайте отдельный Maven-модуль my-spring-boot-starter. Добавьте зависимость spring-boot-autoconfigure. Создайте класс MyAutoConfiguration с @Configuration и @ConditionalOnClass. Внутри создайте бин, который будет автоматически настраиваться.
-Создайте файл META-INF/spring/org.springframework.boot.autoconfigure.AutoConfiguration.imports, где пропишете полное имя вашей конфигурации.
-Упакуйте стартер. В другом проекте подключите его как зависимость и убедитесь, что бин создался без дополнительной конфигурации.
-Изучите аннотации условий: @ConditionalOnMissingBean, @ConditionalOnProperty, @ConditionalOnWebApplication. Поймите, как Spring Boot включает разные конфигурации в зависимости от наличия классов и свойств.
-</string>
+    <string name="titleTip_21">Create Your Own Spring Boot Starter</string>
+    <string name="descriptionTip_21">Understand how auto-configurations work internally</string>
+    <string name="long_description_21">Create a separate Maven module my-spring-boot-starter. Add the spring-boot-autoconfigure dependency. Create a MyAutoConfiguration class with @Configuration and @ConditionalOnClass. Inside, create a bean that will be auto-configured. Create a META-INF/spring/org.springframework.boot.autoconfigure.AutoConfiguration.imports file where you specify the full name of your configuration. Package the starter. In another project, add it as a dependency and verify that the bean was created without additional configuration. Study condition annotations: @ConditionalOnMissingBean, @ConditionalOnProperty, @ConditionalOnWebApplication. Understand how Spring Boot enables different configurations based on the presence of classes and properties.</string>
 
     <string name="numerTip_22">Day #22</string>
-    <string name="titleTip_22">Освойте WebClient для вызова внешних API</string>
-    <string name="descriptionTip_22">RestTemplate устарел, WebClient — реактивный и современный</string>
-    <string name="long_description_22">
-Добавьте spring-boot-starter-webflux. Создайте бин WebClient.Builder в конфигурации. В сервисе внедрите WebClient.Builder и создайте WebClient для конкретного API: webClientBuilder.baseUrl("https://api.github.com").build().
-Сделайте GET-запрос: webClient.get().uri("/users/{username}", username).retrieve().bodyToMono(UserDto.class).block() — для синхронного вызова.
-Изучите обработку ошибок: .onStatus(HttpStatus::is4xxClientError, response -> ...). Попробуйте асинхронный вариант без block(), возвращая Mono UserDto.
-Настройте таймауты и логирование через ExchangeFilterFunction.
-</string>
+    <string name="titleTip_22">Master WebClient for External API Calls</string>
+    <string name="descriptionTip_22">RestTemplate is deprecated, WebClient is reactive and modern</string>
+    <string name="long_description_22">Add spring-boot-starter-webflux. Create a WebClient.Builder bean in configuration. In the service, inject WebClient.Builder and create a WebClient for a specific API: webClientBuilder.baseUrl("https://api.github.com").build(). Make a GET request: webClient.get().uri("/users/{username}", username).retrieve().bodyToMono(UserDto.class).block() – for synchronous call. Study error handling: .onStatus(HttpStatus::is4xxClientError, response -> ...). Try the asynchronous version without .block(), returning Mono\u003CUserDto\u003E. Configure timeouts and logging via ExchangeFilterFunction.</string>
 
     <string name="numerTip_23">Day #23</string>
-    <string name="titleTip_23">Настройте безопасность через Spring Security на простом примере</string>
-    <string name="descriptionTip_23">Безопасность — это не опция, а обязательное требование</string>
-    <string name="long_description_23">
-Добавьте spring-boot-starter-security. Запустите приложение — все эндпоинты будут защищены паролем, который выводится в консоль (пароль генерируется случайно).
-Создайте класс SecurityConfig extends WebSecurityConfigurerAdapter (или используйте SecurityFilterChain для новых версий). Настройте: authorizeHttpRequests().requestMatchers("/public/**").permitAll().anyRequest().authenticated().
-Добавьте in-memory пользователя: User.withUsername("user").password("{noop}pass").roles("USER").build().
-Создайте форму логина: formLogin().permitAll(). Изучите, как работает CSRF защита для POST-запросов.
-</string>
+    <string name="titleTip_23">Configure Security with Spring Security on a Simple Example</string>
+    <string name="descriptionTip_23">Security is not an option, but a mandatory requirement</string>
+    <string name="long_description_23">Add spring-boot-starter-security. Run the application — all endpoints will be protected with a password that is printed to the console (password generated randomly). Create a SecurityConfig class (use SecurityFilterChain for newer versions). Configure: authorizeHttpRequests().requestMatchers("/public/**").permitAll().anyRequest().authenticated(). Add an in-memory user: User.withUsername("user").password("{noop}pass").roles("USER").build(). Add a login form: formLogin().permitAll(). Study how CSRF protection works for POST requests.</string>
 
     <string name="numerTip_24">Day #24</string>
-    <string name="titleTip_24">Реализуйте JWT-аутентификацию вручную</string>
-    <string name="descriptionTip_24">Понимание JWT убережет от ошибок с безопасностью</string>
-    <string name="long_description_24">
-Добавьте зависимости jjwt-api, jjwt-impl, jjwt-jackson. Создайте класс JwtService с методами generateToken() и validateToken(). Используйте секретный ключ, хранимый в переменной окружения.
-Создайте фильтр JwtAuthenticationFilter, который extends OncePerRequestFilter. В doFilterInternal извлекайте токен из заголовка Authorization, валидируйте и устанавливайте аутентификацию в SecurityContext.
-В SecurityConfig добавьте этот фильтр перед UsernamePasswordAuthenticationFilter. Настройте эндпоинт /auth/login, который принимает логин/пароль и возвращает JWT.
-Протестируйте: сначала получите токен, затем используйте его в заголовке для доступа к защищенным эндпоинтам.
-</string>
+    <string name="titleTip_24">Implement JWT Authentication Manually</string>
+    <string name="descriptionTip_24">Understanding JWT prevents security mistakes</string>
+    <string name="long_description_24">Add the jjwt-api, jjwt-impl, jjwt-jackson dependencies. Create a JwtService class with generateToken() and validateToken() methods. Use a secret key stored in an environment variable. Create a JwtAuthenticationFilter that extends OncePerRequestFilter. In doFilterInternal, extract the token from the Authorization header, validate it, and set the authentication in the SecurityContext. In SecurityConfig, add this filter before UsernamePasswordAuthenticationFilter. Configure the /auth/login endpoint that accepts username/password and returns a JWT. Test: first get a token, then use it in the header to access protected endpoints.</string>
 
     <string name="numerTip_25">Day #25</string>
-    <string name="titleTip_25">Освойте событийную модель (Application Events)</string>
-    <string name="descriptionTip_25">События помогают развязать компоненты</string>
-    <string name="long_description_25">
-Создайте кастомное событие UserRegisteredEvent extends ApplicationEvent. В сервисе регистрации опубликуйте событие через ApplicationEventPublisher.publishEvent(new UserRegisteredEvent(this, user)).
-Создайте слушатель с аннотацией @EventListener: public void handleUserRegistered(UserRegisteredEvent event) { sendWelcomeEmail(event.getUser()); }.
-Добавьте второй слушатель, который логирует регистрацию. Запустите и убедитесь, что оба слушателя сработали после сохранения пользователя.
-Изучите асинхронные события: добавьте @Async на слушатель, предварительно включив @EnableAsync. Поймите, как события работают в рамках транзакции: @TransactionalEventListener.
-</string>
+    <string name="titleTip_25">Master the Event Model (Application Events)</string>
+    <string name="descriptionTip_25">Events help decouple components</string>
+    <string name="long_description_25">Create a custom event UserRegisteredEvent extends ApplicationEvent. In the registration service, publish the event via ApplicationEventPublisher.publishEvent(new UserRegisteredEvent(this, user)). Create a listener with @EventListener: public void handleUserRegistered(UserRegisteredEvent event) { sendWelcomeEmail(event.getUser()); }. Add a second listener that logs the registration. Run and verify that both listeners are triggered after the user is saved. Study asynchronous events: add @Async to the listener after enabling @EnableAsync. Understand how events work within a transaction: @TransactionalEventListener.</string>
 
     <string name="numerTip_26">Day #26</string>
-    <string name="titleTip_26">Изучите работу с файлами через MultipartFile</string>
-    <string name="descriptionTip_26">Загрузка файлов — частая задача в веб-приложениях</string>
-    <string name="long_description_26">
-Создайте контроллер с POST-методом, принимающим @RequestParam("file") MultipartFile file. Добавьте проверку: если file.isEmpty() — ошибка. Сохраните файл: file.transferTo(new File("/uploads/" + file.getOriginalFilename())).
-Добавьте ограничения по размеру в application.properties: spring.servlet.multipart.max-file-size=2MB, spring.servlet.multipart.max-request-size=2MB.
-Реализуйте загрузку нескольких файлов: @RequestParam("files") List MultipartFile files. Добавьте валидацию MIME-типа: проверьте ContentType, чтобы не загружали .exe вместо изображений.
-Создайте эндпоинт для скачивания: возвращайте ResponseEntity с InputStreamResource и заголовком Content-Disposition.
-</string>
+    <string name="titleTip_26">Explore File Handling with MultipartFile</string>
+    <string name="descriptionTip_26">File upload is a common task in web applications</string>
+    <string name="long_description_26">Create a controller with a POST method accepting @RequestParam("file") MultipartFile file. Add a check: if file.isEmpty() – error. Save the file: file.transferTo(new File("/uploads/" + file.getOriginalFilename())). Add size limits in application.properties: spring.servlet.multipart.max-file-size=2MB, spring.servlet.multipart.max-request-size=2MB. Implement multiple file upload: @RequestParam("files") List\u003CMultipartFile\u003E files. Add MIME type validation: check ContentType so that .exe files are not uploaded as images. Create a download endpoint: return ResponseEntity with InputStreamResource and Content-Disposition header.</string>
 
     <string name="numerTip_27">Day #27</string>
-    <string name="titleTip_27">Настройте кэш второго уровня в Hibernate</string>
-    <string name="descriptionTip_27">Кэш сущностей может ускорить приложение в разы</string>
-    <string name="long_description_27">
-Добавьте зависимость hibernate-jcache и библиотеку кэша (например, ehcache). В application.properties: spring.jpa.properties.hibernate.cache.use_second_level_cache=true, spring.jpa.properties.hibernate.cache.region.factory_class=jcache.
-Создайте файл ehcache.xml с настройками кэша для сущностей. Над сущностью поставьте @Cache(usage = CacheConcurrencyStrategy.READ_WRITE).
-Выполните в сервисе userRepository.findById(1L) дважды — посмотрите на логи: SQL выполнится только один раз, второй раз сущность будет из кэша.
-Изучите кэш запросов: spring.jpa.properties.hibernate.cache.use_query_cache=true. Поймите, когда кэш эффективен, а когда приводит к проблемам с памятью.
-</string>
+    <string name="titleTip_27">Configure Second-Level Cache in Hibernate</string>
+    <string name="descriptionTip_27">Entity caching can speed up your application dramatically</string>
+    <string name="long_description_27">Add the hibernate-jcache dependency and a cache library (e.g., ehcache). In application.properties: spring.jpa.properties.hibernate.cache.use_second_level_cache=true, spring.jpa.properties.hibernate.cache.region.factory_class=jcache. Create an ehcache.xml file with cache settings for entities. Add @Cache(usage = CacheConcurrencyStrategy.READ_WRITE) to the entity. Run userRepository.findById(1L) twice in a service – look at the logs: SQL will be executed only once, the second time the entity will be from the cache. Study query caching: spring.jpa.properties.hibernate.cache.use_query_cache=true. Understand when cache is efficient and when it leads to memory issues.</string>
 
     <string name="numerTip_28">Day #28</string>
-    <string name="titleTip_28">Освойте тестирование с Testcontainers</string>
-    <string name="descriptionTip_28">Реальные тесты на реальной БД, а не на H2</string>
-    <string name="long_description_28">
-Добавьте зависимость org.testcontainers:testcontainers и org.testcontainers:postgresql. В тестовом классе добавьте @Testcontainers и @Container public static PostgreSQLContainer ? postgres = new PostgreSQLContainer >("postgres:15").
-Настройте тестовый DataSource через @DynamicPropertySource: свойства БД будут взяты из контейнера. Напишите интеграционный тест с @SpringBootTest, который реально сохраняет и находит пользователя в PostgreSQL.
-Добавьте тест, проверяющий уникальность email — H2 может вести себя иначе, а Testcontainers гарантирует совместимость с production.
-Убедитесь, что контейнеры автоматически запускаются и удаляются после тестов.
-</string>
+    <string name="titleTip_28">Master Testing with Testcontainers</string>
+    <string name="descriptionTip_28">Real tests on a real database, not on H2</string>
+    <string name="long_description_28">Add the org.testcontainers:testcontainers and org.testcontainers:postgresql dependencies. In the test class, add @Testcontainers and @Container public static PostgreSQLContainer\u003C?\u003E postgres = new PostgreSQLContainer>("postgres:15"). Configure the test DataSource via @DynamicPropertySource: the DB properties will be taken from the container. Write an integration test with @SpringBootTest that actually saves and finds a user in PostgreSQL. Add a test checking email uniqueness – H2 may behave differently, but Testcontainers guarantees compatibility with production. Make sure containers start and stop automatically after tests.</string>
 
     <string name="numerTip_29">Day #29</string>
-    <string name="titleTip_29">Разберитесь с конфигурацией через аннотации условий</string>
-    <string name="descriptionTip_29">Условные бины — основа гибких конфигураций</string>
-    <string name="long_description_29">
-Создайте бин, который должен создаваться только если существует определенный класс: @ConditionalOnClass(name = "org.postgresql.Driver"). Создайте бин, который создается только если в properties есть свойство app.feature.enabled=true: @ConditionalOnProperty(name = "app.feature.enabled", havingValue = "true").
-Создайте свой собственный Condition: implements Condition, переопределите matches() на основе наличия файла или системного свойства. Примените @Conditional(MyCustomCondition.class).
-Поймите, как Spring Boot использует эти аннотации для того, чтобы включать автоконфигурацию только когда она действительно нужна.
-</string>
+    <string name="titleTip_29">Understand Configuration with Condition Annotations</string>
+    <string name="descriptionTip_29">Conditional beans are the foundation of flexible configurations</string>
+    <string name="long_description_29">Create a bean that should only be created if a specific class exists: @ConditionalOnClass(name = "org.postgresql.Driver"). Create a bean that is created only if the property app.feature.enabled=true exists: @ConditionalOnProperty(name = "app.feature.enabled", havingValue = "true"). Create your own Condition: implements Condition, override matches() based on the existence of a file or system property. Apply @Conditional(MyCustomCondition.class). Understand how Spring Boot uses these annotations to enable auto-configuration only when actually needed.</string>
 
     <string name="numerTip_30">Day #30</string>
-    <string name="titleTip_30">Изучите работу с WebSockets через STOMP</string>
-    <string name="descriptionTip_30">Реалтайм-коммуникация открывает новые возможности</string>
-    <string name="long_description_30">
-Добавьте spring-boot-starter-websocket. Создайте класс WebSocketConfig с @EnableWebSocketMessageBroker. Настройте: registry.enableStompBrokerRelay("/topic") для простого брокера в памяти.
-Создайте контроллер с @MessageMapping("/chat"), который принимает сообщения и отправляет их в /topic/messages с помощью @SendTo.
-Создайте простой HTML-клиент с JavaScript, подключающийся через SockJS и STOMP. Реализуйте отправку и получение сообщений в реальном времени.
-Добавьте обработку подключений через @EventListener(WebSocketConnectEvent.class). Изучите, как масштабировать WebSocket-соединения через Redis.
-</string>
-
+    <string name="titleTip_30">Explore Working with WebSockets via STOMP</string>
+    <string name="descriptionTip_30">Real-time communication opens up new possibilities</string>
+    <string name="long_description_30">Add spring-boot-starter-websocket. Create a WebSocketConfig class with @EnableWebSocketMessageBroker. Configure: registry.enableStompBrokerRelay("/topic") for a simple in-memory broker. Create a controller with @MessageMapping("/chat") that receives messages and sends them to /topic/messages using @SendTo. Create a simple HTML client with JavaScript connecting via SockJS and STOMP. Implement sending and receiving messages in real-time. Add connection handling via @EventListener(WebSocketConnectEvent.class). Study how to scale WebSocket connections via Redis.</string>
 </resources>

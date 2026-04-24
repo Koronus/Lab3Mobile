@@ -12,10 +12,7 @@ class HeaderAdapter : RecyclerView.Adapter<HeaderViewHolder>() {
         return HeaderViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: HeaderViewHolder, position: Int) {
-        holder.bind();
-
-    }
+    override fun onBindViewHolder(holder: HeaderViewHolder, position: Int) {}
 
 
     override fun getItemCount(): Int = 1
