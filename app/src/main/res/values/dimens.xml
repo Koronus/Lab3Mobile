@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="paddingTop">40dp</dimen>
+    <dimen name="paddingLeft">20dp</dimen>
+    <dimen name="paddingRight">20dp</dimen>
+
+    <!-- item_layout.xml -->
+    <dimen name="layout_marginHorizontal">8dp</dimen>
+    <dimen name="layout_marginVertical">4dp</dimen>
+
+    <dimen name="cardCornerRadius">10dp</dimen>
+    <dimen name="cardElevation">4dp</dimen>
+
+
+    <dimen name="padding_item">12dp</dimen>
+
+        <!--ImageView-->
+        <dimen name="layout_height">150dp</dimen>
+
+        <dimen name="layout_marginVertical_image">8dp</dimen>
+
+    <!-- fragment_detail.xml -->
+
+        <!-- textview -->
+        <dimen name="layout_width_text2">0dp</dimen>
+        <dimen name="layout_margin_top_text2">8dp</dimen>
+
+        <!-- image imageview3 -->
+        <dimen name="layout_height_image">200dp</dimen>
+        <dimen name="layout_marginTop">4dp</dimen>
+
+        <!-- textview3 -->
+        <dimen name="layout_marginTop_text3">16dp</dimen>
+        <dimen name="textSize_text3">16sp</dimen>
+        <dimen name="lineSpacingExtra">4dp</dimen>
+        <dimen name="layout_width_text3">0dp</dimen>
+
+    <!-- item_header.xml -->
+
+        <dimen name="layout_marginTop_header">8dp</dimen>
+
+
+
+</resources>
